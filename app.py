@@ -6,9 +6,9 @@ import os
 import re
 
 # API Key
-if "GROQ_API_KEY" in st.secrets:
+try:
     api_key = st.secrets["GROQ_API_KEY"]
-else:
+except:
     from dotenv import load_dotenv
     load_dotenv()
     api_key = os.getenv("GROQ_API_KEY")
@@ -17,11 +17,39 @@ client = Groq(api_key=api_key)
 
 st.set_page_config(page_title="PolicyGuard", page_icon="⚖️", layout="wide")
 
-# Header
-st.title("⚖️ PolicyGuard")
-st.subheader("AI Legal Risk Scanner for HR Policies — Indian Labour Law")
-st.markdown("---")
+# Dark/Light mode toggle
+mode = st.toggle("🌙 Dark Mode", value=True)
 
+if mode:
+    bg = "#0e1117"
+    text = "#ffffff"
+    card = "#1e2130"
+else:
+    bg = "#ffffff"
+    text = "#000000"
+    card = "#f0f2f6"
+
+st.markdown(f"""
+    <style>
+    .stApp {{ background-color: {bg}; color: {text}; }}
+    .block-container {{ padding-top: 2rem; }}
+    </style>
+""", unsafe_allow_html=True)
+
+# Centered header
+st.markdown(f"""
+    <div style='text-align: center; padding: 2rem 0;'>
+        <h1 style='font-size: 3rem; color: {text};'>⚖️ PolicyGuard</h1>
+        <p style='font-size: 1.3rem; color: {"#aaaaaa" if mode else "#555555"};'>
+            AI Legal Risk Scanner for HR Policies — Indian Labour Law
+        </p>
+        <p style='color: {"#888888" if mode else "#777777"}; font-size: 0.9rem;'>
+            Upload your HR policy and get an instant compliance report against 10 Indian Labour Laws
+        </p>
+    </div>
+""", unsafe_allow_html=True)
+
+st.markdown("---")
 # How it works section
 with st.expander("ℹ️ How does PolicyGuard work?"):
     col1, col2, col3 = st.columns(3)
