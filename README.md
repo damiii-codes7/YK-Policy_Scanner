@@ -1,4 +1,4 @@
-# AI Legal Summarizer
+# AI Legal Summarizer - https://policyguard-riskmanagementanalysis.streamlit.app/
 
 An AI-powered legal-tech tool designed to simplify legal research by converting lengthy court judgments into concise, structured summaries.
 
@@ -18,8 +18,7 @@ Legal judgments are often long, complex, and difficult to process quickly. This 
 
 * Python
 * Generative AI / LLM APIs
-* Streamlit / Flask (if used)
-* NLP-based text processing
+* Streamlit 
 
 ## Future Improvements
 
