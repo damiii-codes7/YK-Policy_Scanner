@@ -120,9 +120,6 @@ Built solo in 8 days.
 
 **Damini** — Law background meets legal-tech.
 
----
 
-*PolicyGuard — Legal compliance. Made accessible.*
-## 🚀 Run Locally
 
 ```bash
