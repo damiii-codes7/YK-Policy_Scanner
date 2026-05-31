@@ -57,7 +57,7 @@ AI-Powered &nbsp;|&nbsp; Indian Legal Intelligence &nbsp;|&nbsp; Powered by Llam
 <div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(4rem,10vw,8rem);line-height:0.9;color:#E94E1B;letter-spacing:0.02em;'>POLICY</div>
 </div>
 <div style='overflow:hidden;margin-bottom:2rem;'>
-<div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(1.5rem,4vw,3rem);line-height:0.9;color:#888;'>AI Legal Intelligence</div>
+<div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(1.5rem,4vw,3rem);line-height:0.9;color:#888;'>AI Legal Intelligence — Indian Law Made Accessible</div>
 </div>
 </div>
 <hr style='border-color:#181818;margin:0;'>
@@ -307,6 +307,11 @@ Judgment text:
             <div style='text-align:center;margin-top:1rem;padding-bottom:4vh;'>
             <span style='font-family:Space Mono,monospace;font-size:0.6rem;color:#444;letter-spacing:0.1em;'>
             PolicyGuard is an AI tool. Always verify with the original judgment text.
+            <div style='text-align:center;padding:1rem;font-family:Space Mono,monospace;
+font-size:0.55rem;color:#333;text-transform:uppercase;letter-spacing:0.1em;'>
+Adv. Damini Yasodai — YK Legal
+</div>
+
             </span>
             </div>
             """, unsafe_allow_html=True)
