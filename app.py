@@ -79,7 +79,7 @@ AI-Powered &nbsp;|&nbsp; Indian Legal Intelligence &nbsp;|&nbsp; Powered by Llam
 </div>
 </div>
 """, unsafe_allow_html=True)
-            st.markdown("""
+st.markdown("""
 <div style='text-align:center;padding:1rem;font-family:Space Mono,monospace;
 font-size:0.55rem;color:#333;text-transform:uppercase;letter-spacing:0.1em;'>
 Always consult a legal professional before signing.<br>Adv. Damini Yasodai — YK Legal
