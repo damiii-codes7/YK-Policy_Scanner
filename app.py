@@ -20,9 +20,6 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&display=swap');
 .stApp { background-color: #030303 !important; color: #ffffff !important; font-family: 'Space Mono', monospace !important; }
-.stTabs [data-baseweb="tab-list"] { background-color: #030303 !important; border-bottom: 1px solid #181818 !important; gap: 0 !important; justify-content: center !important; }
-.stTabs [data-baseweb="tab"] { background-color: #030303 !important; color: #888 !important; font-family: 'Space Mono', monospace !important; font-size: 0.75rem !important; letter-spacing: 0.15em !important; text-transform: uppercase !important; border: 1px solid #181818 !important; border-bottom: none !important; padding: 0.75rem 2rem !important; }
-.stTabs [aria-selected="true"] { background-color: #E94E1B !important; color: #030303 !important; font-weight: 700 !important; }
 .stButton > button { background: transparent !important; color: #E94E1B !important; border: 1px solid #E94E1B !important; font-family: 'Space Mono', monospace !important; font-size: 0.75rem !important; letter-spacing: 0.15em !important; text-transform: uppercase !important; padding: 1rem 2rem !important; transition: all 0.3s ease !important; width: 100% !important; }
 .stButton > button:hover { background: #E94E1B !important; color: #030303 !important; }
 div[data-testid="metric-container"] { background: transparent !important; border: 1px solid #181818 !important; padding: 1.5rem !important; }
@@ -32,7 +29,6 @@ div[data-testid="metric-container"] div[data-testid="stMetricValue"] { font-fami
 .stDownloadButton > button { background: #E94E1B !important; color: #030303 !important; border: 1px solid #E94E1B !important; font-family: 'Space Mono', monospace !important; font-size: 0.75rem !important; font-weight: 700 !important; letter-spacing: 0.15em !important; text-transform: uppercase !important; padding: 1rem 2rem !important; }
 hr { border-color: #181818 !important; }
 .stMarkdown p { color: #888 !important; font-size: 0.8rem !important; }
-.stSelectbox > div { background: #030303 !important; border: 1px solid #181818 !important; color: #888 !important; font-family: 'Space Mono', monospace !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -75,10 +71,114 @@ AI-Powered &nbsp;|&nbsp; Indian Legal Intelligence &nbsp;|&nbsp; Powered by Llam
 <span style='padding:0 2rem;'>POSH Act 2013</span><span style='color:#E94E1B;padding:0 1rem;'>◆</span>
 <span style='padding:0 2rem;'>Maternity Benefit Act</span><span style='color:#E94E1B;padding:0 1rem;'>◆</span>
 <span style='padding:0 2rem;'>Minimum Wages Act</span><span style='color:#E94E1B;padding:0 1rem;'>◆</span>
-<span style='padding:0 2rem;'>Code on Wages 2019</span><span style='color:#E94E1B;padding:0 1rem;'>◆</span>
 </div>
 </div>
 """, unsafe_allow_html=True)
+
+st.markdown("""
+<div style='font-family:Space Mono,monospace;font-size:0.65rem;text-transform:uppercase;
+letter-spacing:0.2em;color:#888;margin:3rem 0 1rem 0;'>
+01 / UPLOAD TARGET DOCUMENT
+</div>
+""", unsafe_allow_html=True)
+
+uploaded_file = st.file_uploader("", type=["pdf"], label_visibility="collapsed")
+
+if uploaded_file:
+    with pdfplumber.open(uploaded_file) as pdf:
+        full_text = ""
+        total_pages = len(pdf.pages)
+        for page in pdf.pages[:15]:
+            text = page.extract_text()
+            if text:
+                full_text += text + "\n"
+
+    st.markdown(f"""
+    <div style='border:1px solid #E94E1B;padding:1rem 1.5rem;margin:1rem 0;
+    font-family:Space Mono,monospace;font-size:0.7rem;color:#E94E1B;letter-spacing:0.05em;'>
+    ◆ DOCUMENT LOADED — {uploaded_file.name}
+    </div>
+    """, unsafe_allow_html=True)
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric("PAGES SCANNED", min(15, total_pages))
+    col2.metric("LAWS CHECKED", "10")
+    col3.metric("STATUS", "READY")
+
+    st.markdown("""
+    <div style='font-family:Space Mono,monospace;font-size:0.65rem;text-transform:uppercase;
+    letter-spacing:0.2em;color:#888;margin:2rem 0 1rem 0;'>
+    02 / INITIATE SCAN
+    </div>
+    """, unsafe_allow_html=True)
+
+    if st.button("RUN LEGAL RISK ANALYSIS →", use_container_width=True):
+        with st.spinner("Scanning against Indian Labour Laws..."):
+            prompt = ANALYSIS_PROMPT.format(
+                laws=INDIAN_LABOUR_LAWS,
+                policy_text=full_text[:4000]
+            )
+            response = client.chat.completions.create(
+                model="llama-3.1-8b-instant",
+                messages=[{"role": "user", "content": prompt}]
+            )
+            result = response.choices[0].message.content
+
+        st.markdown("""
+        <div style='font-family:Space Mono,monospace;font-size:0.65rem;text-transform:uppercase;
+        letter-spacing:0.2em;color:#888;margin:2rem 0 1rem 0;'>
+        03 / RISK REPORT
+        </div>
+        """, unsafe_allow_html=True)
+
+        high = result.count("HIGH")
+        medium = result.count("MEDIUM")
+        low = result.count("LOW")
+
+        st.markdown(f"""
+        <div style='display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid #181818;margin-bottom:2rem;'>
+        <div style='padding:2rem;border-right:1px solid #181818;text-align:center;'>
+        <div style='font-family:Space Mono,monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.2em;color:#888;margin-bottom:0.5rem;'>HIGH RISK</div>
+        <div style='font-family:Bebas Neue,sans-serif;font-size:4rem;color:#E94E1B;line-height:1;'>{high}</div>
+        </div>
+        <div style='padding:2rem;border-right:1px solid #181818;text-align:center;'>
+        <div style='font-family:Space Mono,monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.2em;color:#888;margin-bottom:0.5rem;'>MEDIUM RISK</div>
+        <div style='font-family:Bebas Neue,sans-serif;font-size:4rem;color:#ffffff;line-height:1;'>{medium}</div>
+        </div>
+        <div style='padding:2rem;text-align:center;'>
+        <div style='font-family:Space Mono,monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.2em;color:#888;margin-bottom:0.5rem;'>LOW RISK</div>
+        <div style='font-family:Bebas Neue,sans-serif;font-size:4rem;color:#444;line-height:1;'>{low}</div>
+        </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        issues = re.split(r'ISSUE \d+:', result)
+        issues = [i.strip() for i in issues if i.strip()]
+
+        for idx, issue in enumerate(issues, 1):
+            if "HIGH" in issue:
+                label = "🔴 HIGH RISK"
+                expanded = True
+            elif "MEDIUM" in issue:
+                label = "🟡 MEDIUM RISK"
+                expanded = False
+            else:
+                label = "🟢 LOW RISK"
+                expanded = False
+
+            with st.expander(f"{label} — VIOLATION {idx:02d}", expanded=expanded):
+                st.markdown(issue)
+
+        st.markdown("<hr style='border-color:#181818;margin:2rem 0;'>", unsafe_allow_html=True)
+
+        st.download_button(
+            label="EXPORT RISK REPORT →",
+            data=f"YK POLICY — LEGAL RISK REPORT\nDocument: {uploaded_file.name}\n\n{result}",
+            file_name="YKPolicy_Risk_Report.txt",
+            mime="text/plain",
+            use_container_width=True
+        )
+
 st.markdown("""
 <div style='text-align:center;padding:1rem;font-family:Space Mono,monospace;
 font-size:0.55rem;color:#333;text-transform:uppercase;letter-spacing:0.1em;'>
