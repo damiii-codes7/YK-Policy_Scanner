@@ -14,7 +14,7 @@ except:
 
 client = Groq(api_key=api_key)
 
-st.set_page_config(page_title="PolicyGuard", page_icon="⚖️", layout="wide")
+st.set_page_config(page_title="YK Policy", page_icon="⚖️", layout="wide")
 
 st.markdown("""
 <style>
@@ -51,13 +51,13 @@ st.markdown("""
 AI-Powered &nbsp;|&nbsp; Indian Legal Intelligence &nbsp;|&nbsp; Powered by Llama 3.1
 </div>
 <div style='overflow:hidden;'>
-<div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(4rem,10vw,8rem);line-height:0.9;color:#ffffff;letter-spacing:0.02em;'>POLICY</div>
+<div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(4rem,10vw,8rem);line-height:0.9;color:#ffffff;letter-spacing:0.02em;'>YK</div>
 </div>
 <div style='overflow:hidden;'>
-<div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(4rem,10vw,8rem);line-height:0.9;color:#E94E1B;letter-spacing:0.02em;'>GUARD</div>
+<div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(4rem,10vw,8rem);line-height:0.9;color:#E94E1B;letter-spacing:0.02em;'>POLICY</div>
 </div>
 <div style='overflow:hidden;margin-bottom:2rem;'>
-<div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(1.5rem,4vw,3rem);line-height:0.9;color:#888;'>LEGAL INTELLIGENCE PLATFORM</div>
+<div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(1.5rem,4vw,3rem);line-height:0.9;color:#888;'>AI Legal Intelligence</div>
 </div>
 </div>
 <hr style='border-color:#181818;margin:0;'>
