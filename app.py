@@ -44,7 +44,7 @@ st.markdown("""
 <div style='position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid #E94E1B;opacity:0;top:50%;left:50%;transform:translate(-50%,-50%);animation:ringPulse 6s ease 2s infinite;pointer-events:none;'></div>
 <div style='display:inline-flex;align-items:center;gap:0.75rem;font-family:Space Mono,monospace;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:#888;margin-bottom:2rem;padding:0.6rem 1.2rem;border:1px solid #181818;'>
 <span style='width:6px;height:6px;background:#E94E1B;border-radius:50%;animation:pulse 2s infinite;display:inline-block;'></span>
-AI-Powered &nbsp;|&nbsp; Indian Legal Intelligence &nbsp;|&nbsp; Powered by Llama 3.1
+AI-Powered &nbsp;|&nbsp; Legal Software &nbsp;|&nbsp; Tech & Laws
 </div>
 <div style='overflow:hidden;'>
 <div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(4rem,10vw,8rem);line-height:0.9;color:#ffffff;letter-spacing:0.02em;'>YK</div>
@@ -53,7 +53,7 @@ AI-Powered &nbsp;|&nbsp; Indian Legal Intelligence &nbsp;|&nbsp; Powered by Llam
 <div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.5s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(4rem,10vw,8rem);line-height:0.9;color:#E94E1B;letter-spacing:0.02em;'>POLICY</div>
 </div>
 <div style='overflow:hidden;margin-bottom:2rem;'>
-<div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(1.5rem,4vw,3rem);line-height:0.9;color:#888;'>AI Legal Intelligence — Indian Law Made Accessible</div>
+<div style='transform:translateY(115%);animation:slideUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.7s forwards;font-family:Bebas Neue,sans-serif;font-size:clamp(1.5rem,4vw,3rem);line-height:0.9;color:#888;'>Prepare and prevent - Don't repair and repent</div>
 </div>
 </div>
 <hr style='border-color:#181818;margin:0;'>
@@ -78,7 +78,7 @@ AI-Powered &nbsp;|&nbsp; Indian Legal Intelligence &nbsp;|&nbsp; Powered by Llam
 st.markdown("""
 <div style='font-family:Space Mono,monospace;font-size:0.65rem;text-transform:uppercase;
 letter-spacing:0.2em;color:#888;margin:3rem 0 1rem 0;'>
-01 / UPLOAD TARGET DOCUMENT
+UPLOAD POLICY DOCUMENT
 </div>
 """, unsafe_allow_html=True)
 
